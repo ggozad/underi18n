@@ -1,3 +1,9 @@
+//    underi18n v0.1
+
+//    (c) 2012 Yiorgis Gozadinos, Crypho AS
+//    Backbone.xmpp is distributed under the MIT license.
+//    http://github.com/ggozad/underi18n
+
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
