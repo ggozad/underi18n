@@ -30,9 +30,24 @@
             return function (catalog) {
                 return new MessageFactory(catalog).translate;
             };
-        })()
+        })(),
+
+        template: function (str, factory) {
+            var s = _.templateSettings;
+            return str.replace(s.translate, function (match, code) {
+                return factory(
+                    code
+                    .replace(/^\s+|\s+$/g, '')
+                );
+            }).replace(/\$\{(.*?)\}/g, function (m, c) {
+                return s.i18nVarLeftDel + c + s.i18nVarRightDel;
+            });
+        }
     };
 
+    _.templateSettings.translate = /<%_([\s\S]+?)%>/g;
+    _.templateSettings.i18nVarLeftDel = '<%=';
+    _.templateSettings.i18nVarRightDel = '%>';
     return underi18n;
 }));
 
