@@ -12,6 +12,7 @@
 }(this, function ($, _) {
 
     var underi18n = {
+
         MessageFactory: (function () {
             var MessageFactory = function (catalog) {
                 this.translate = function (msgid, keywords) {
