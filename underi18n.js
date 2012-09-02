@@ -26,8 +26,7 @@
                     if (keywords) {
                         var regexp;
                         _.each(keywords, function (val, key) {
-                            regexp = RegExp("\\$\\{" + key + '\\}', 'g');
-                            msgstr = msgstr.replace(regexp, val);
+                            msgstr = msgstr.replace('${'+key+'}', val);
                         });
                     }
                     return msgstr;
