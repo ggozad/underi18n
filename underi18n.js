@@ -38,7 +38,7 @@
         })(),
 
         template: function (str, factory) {
-            var s = _.templateSettings;
+            var s = this.templateSettings;
             return str.replace(s.translate, function (match, code) {
                 return factory(
                     code
@@ -47,12 +47,15 @@
             }).replace(/\$\{(.*?)\}/g, function (m, c) {
                 return s.i18nVarLeftDel + c + s.i18nVarRightDel;
             });
+        },
+
+        templateSettings: {
+            translate: /<%_([\s\S]+?)%>/g,
+            i18nVarLeftDel: '<%=',
+            i18nVarRightDel: '%>'
         }
     };
 
-    _.templateSettings.translate = /<%_([\s\S]+?)%>/g;
-    _.templateSettings.i18nVarLeftDel = '<%=';
-    _.templateSettings.i18nVarRightDel = '%>';
     return underi18n;
 }));
 
