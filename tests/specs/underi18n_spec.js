@@ -1,6 +1,5 @@
 (function ($, _, underi18n) {
 
-
     describe('underi18n', function () {
 
         var test_el = {

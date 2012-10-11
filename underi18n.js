@@ -1,7 +1,7 @@
 //    underi18n v0.1
 
 //    (c) 2012 Yiorgis Gozadinos, Crypho AS
-//    Backbone.xmpp is distributed under the MIT license.
+//    under18n is distributed under the MIT license.
 //    http://github.com/ggozad/underi18n
 
 (function (root, factory) {

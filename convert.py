@@ -1,8 +1,4 @@
 #!/usr/bin/env python
-"""Module docstring.
-
-This serves as a long usage message.
-"""
 
 import sys
 import getopt
@@ -27,7 +23,7 @@ def main(argv):
         elif opt in ("-o", "--ofile"):
             outputfile = arg
     if not inputfile:
-        print 'You need to specify the input files.'
+        print 'test.py -i <inputfile> -o <outputfile>'
         sys.exit()
 
     with open(inputfile) as ifile:
