@@ -35,6 +35,40 @@ t('Role ${role} does not exist in ${context}', {role: 'διαχειριστής'
 // Returns "Ο ρόλος διαχειριστής δεν υπάρχει στο πρόγραμμα"
 ```
 
-## Templating
+## Templates
 
-You can translate a template by calling `under18n.template`.
+Typically variables in templates are indicated with some delimiter. In mustache for instance `{{ var }}` is used whereas `<%= var %>` is default for underscore. We use the same approach to indicate translatable strings. You can specify the delimiters for translatable strings as a RegExp, as well as the left/right delimiters used by your template language of choice in `under18n.templateSettings`. By default this is following underscore conventions:
+
+```javascript
+templateSettings: {
+    translate: /<%_([\s\S]+?)%>/g,
+    i18nVarLeftDel: '<%=',
+    i18nVarRightDel: '%>'
+}
+```
+
+so, `<%_ i18n %>` are set to denote translatable strings and `<%= var %>` is used to denote variables inside a template.
+
+You can translate a template by calling `under18n.template`, for example using underscore, you can do
+
+```javascript
+var templ = _.template(under18n.template(myTemplate, t));
+```
+
+where t is the `MessageFactory`, and `myTemplate` is the template.
+
+With the example catalog, say if the template was
+
+```javascript
+
+<h1><%_ Developer %></h1>
+<span><%_ Role ${role} does not exist in ${context} _></span>
+
+```
+
+`templ({role: 'διαχειριστής', context: 'πρόγραμμα'})` would yield:
+
+```html
+<h1>Προγραμματιστής</h1>
+<span>Ο ρόλος διαχειριστής δεν υπάρχει στο πρόγραμμα</span>
+```
