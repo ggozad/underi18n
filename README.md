@@ -55,20 +55,32 @@ You can translate a template by calling `under18n.template`, for example using u
 var templ = _.template(under18n.template(myTemplate, t));
 ```
 
-where t is the `MessageFactory`, and `myTemplate` is the template.
+### Example
 
-With the example catalog, say if the template was
+Given the following catalogs, factories and template for english and greek and assuming an underscore template,
+```javascript
+var test_en = {
+        'files_label': 'Files',
+        'num_files': 'There are ${num} files in this folder'
+    },
 
-```html
+    templ = '<h1><%= title %></h1>' +
+            '<label><%_ files_label %></label>' +
+            '<span><%_ num_files %></span>',
 
-<h1><%_ Developer %></h1>
-<span><%_ Role ${role} does not exist in ${context} _></span>
+    t_en = underi18n.MessageFactory(test_en);
+    t_el = underi18n.MessageFactory(test_el);
 
 ```
-
-`templ({role: 'διαχειριστής', context: 'πρόγραμμα'})` would yield:
+the template can by constructed by,
+```javascript
+var toRender = _.template(underi18n.template(templ, t_en));
+toRender({title: 'Summary', num: 3});
+```
+would yield
 
 ```html
-<h1>Προγραμματιστής</h1>
-<span>Ο ρόλος διαχειριστής δεν υπάρχει στο πρόγραμμα</span>
+<h1>Summary</h1>
+<label>Files</label>
+<span>There are 3 files in this folder</span>
 ```
