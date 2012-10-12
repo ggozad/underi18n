@@ -84,3 +84,8 @@ would yield
 <label>Files</label>
 <span>There are 3 files in this folder</span>
 ```
+
+## AMD loading
+
+under18n will register as an anonymous module if you use [requireJS](http://requirejs.org/).
+

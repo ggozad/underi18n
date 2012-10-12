@@ -2,7 +2,7 @@
 
 import sys
 import getopt
-from gettext import GNUTranslations
+import gettext
 import json
 
 
@@ -27,7 +27,7 @@ def main(argv):
         sys.exit()
 
     with open(inputfile) as ifile:
-        catalog = GNUTranslations(ifile)._catalog
+        catalog = gettext.GNUTranslations(ifile)._catalog
 
     del catalog['']
     output = json.dumps(catalog)
