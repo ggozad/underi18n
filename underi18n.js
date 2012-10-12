@@ -7,15 +7,15 @@
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
         // AMD. Register as an anonymous module.
-        define(['jquery', 'underscore'], function ($, _) {
-            return (root.underi18n = factory($, _));
+        define([], function () {
+            return (root.underi18n = factory());
         });
     } else {
         // Browser globals
-        root.underi18n = factory($, _);
+        root.underi18n = factory();
     }
 
-}(this, function ($, _) {
+}(this, function () {
 
     var underi18n = {
 
@@ -24,10 +24,9 @@
                 this.translate = function (msgid, keywords) {
                     var msgstr  = catalog[msgid] ? catalog[msgid] : msgid;
                     if (keywords) {
-                        var regexp;
-                        _.each(keywords, function (val, key) {
-                            msgstr = msgstr.replace('${'+key+'}', val);
-                        });
+                        for (var key in keywords) {
+                            msgstr = msgstr.replace('${'+key+'}', keywords[key]);
+                        }
                     }
                     return msgstr;
                 };

@@ -59,7 +59,7 @@ where t is the `MessageFactory`, and `myTemplate` is the template.
 
 With the example catalog, say if the template was
 
-```javascript
+```html
 
 <h1><%_ Developer %></h1>
 <span><%_ Role ${role} does not exist in ${context} _></span>
