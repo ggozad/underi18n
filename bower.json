@@ -12,7 +12,6 @@
     "internationalization"
   ],
   "devDependencies": {
-    "jquery": "",
     "underscore": "",
     "jasmine": ""
   },
