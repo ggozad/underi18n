@@ -20,32 +20,41 @@
     var underi18n = {
 
         MessageFactory: (function () {
-            var MessageFactory = function (catalog) {
+            var MessageFactory = function (catalog, underi18n) {
                 this.translate = function (msgid, keywords) {
+                    var s = underi18n.translateSettings;
                     var msgstr  = catalog[msgid] ? catalog[msgid] : msgid;
                     if (keywords) {
                         for (var key in keywords) {
-                            msgstr = msgstr.replace('${'+key+'}', keywords[key]);
+                            msgstr = msgstr.replace(s.left + key+ s.right, keywords[key]);
                         }
                     }
                     return msgstr;
                 };
             };
             return function (catalog) {
-                return new MessageFactory(catalog).translate;
+                // this == underi18n
+                return new MessageFactory(catalog, this).translate;
             };
         })(),
 
         template: function (str, factory) {
             var s = this.templateSettings;
+            var st = this.translateSettings;
             return str.replace(s.translate, function (match, code) {
                 return factory(
                     code
                     .replace(/^\s+|\s+$/g, '')
                 );
-            }).replace(/\$\{(.*?)\}/g, function (m, c) {
+            }).replace(st.regexp, function (m, c) {
                 return s.i18nVarLeftDel + c + s.i18nVarRightDel;
             });
+        },
+
+        translateSettings: {
+            regexp: /\$\{(.*?)\}/g,
+            left: '${',
+            right: '}'
         },
 
         templateSettings: {
@@ -57,5 +66,3 @@
 
     return underi18n;
 }));
-
-

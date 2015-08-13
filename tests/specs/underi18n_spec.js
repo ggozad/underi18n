@@ -51,4 +51,56 @@
 
     });
 
+    describe('different translateSettings', function () {
+        // Clone
+        var local_underi18n = _.clone(underi18n);
+
+        local_underi18n.translateSettings = {
+            regexp: /\%\{(.*?)\}/g,
+            left: '%{',
+            right: '}'
+        };
+
+        var test_el = {
+                'Role %{role}': 'Ο ρόλος %{role}'},
+            t_el = local_underi18n.MessageFactory(test_el);
+
+        it('translate by different delimiter', function () {
+            expect(t_el('Role %{role}', {role: 'διαχειριστής'})).toEqual('Ο ρόλος διαχειριστής');
+        });
+
+
+    });
+
+    describe('different translateSettings for templates', function () {
+        // Clone
+        var local_underi18n = _.clone(underi18n);
+
+        local_underi18n.translateSettings = {
+            regexp: /\%\{(.*?)\}/g,
+            left: '%{',
+            right: '}'
+        };
+
+        var test_en = {
+                'files_label': 'Files',
+                'num_files': 'There are %{num} files in this folder'
+            },
+            templ = '<h1><%= title %></h1>' +
+                '<label><%_ files_label %></label>' +
+                '<span><%_ num_files %></span>',
+            t_en = local_underi18n.MessageFactory(test_en);
+
+        it('will run i18n replacements in an underscore template', function () {
+            var x = _.template(local_underi18n.template(templ, t_en));
+
+            expect(x({title: 'Summary', num: 3})).toEqual(
+                '<h1>Summary</h1>' +
+                '<label>Files</label>' +
+                '<span>There are 3 files in this folder</span>'
+            );
+        });
+
+    });
+
 })(this.jQuery, this._, this.underi18n);
