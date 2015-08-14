@@ -1,11 +1,11 @@
-# underi18nn.js
+# underi18n.js
 
-`underi18nn` is a minimalistic approach to internationalization for javascript-based templates.
+`underi18n` is a minimalistic approach to internationalization for javascript-based templates.
 It can work in conjuction with other libraries providing the templates, such as [underscore](http://underscorejs.org/#template) or [moustache](https://github.com/janl/mustache.js). It supports variable substitution and AMD loading.
 
 ## Catalogs
 
-`underi18nn` uses a simple JSON format for catalogs, following the standard `gettext` format. In the following example,
+`underi18n` uses a simple JSON format for catalogs, following the standard `gettext` format. In the following example,
 
 ```javascript
 {
@@ -37,7 +37,7 @@ t('Role ${role} does not exist in ${context}', {role: 'διαχειριστής'
 
 ## Templates
 
-Typically variables in templates are indicated with some delimiter. In mustache for instance `{{ var }}` is used whereas `<%= var %>` is default for underscore. We use the same approach to indicate translatable strings. You can specify the delimiters for translatable strings as a RegExp, as well as the left/right delimiters used by your template language of choice in `underi18nn.templateSettings`. By default this is following underscore conventions:
+Typically variables in templates are indicated with some delimiter. In mustache for instance `{{ var }}` is used whereas `<%= var %>` is default for underscore. We use the same approach to indicate translatable strings. You can specify the delimiters for translatable strings as a RegExp, as well as the left/right delimiters used by your template language of choice in `underi18n.templateSettings`. By default this is following underscore conventions:
 
 ```javascript
 templateSettings: {
@@ -49,10 +49,10 @@ templateSettings: {
 
 so, `<%_ i18n %>` are set to denote translatable strings and `<%= var %>` is used to denote variables inside a template.
 
-You can translate a template by calling `underi18nn.template`, for example using underscore, you can do
+You can translate a template by calling `underi18n.template`, for example using underscore, you can do
 
 ```javascript
-var templ = _.template(underi18nn.template(myTemplate, t));
+var templ = _.template(underi18n.template(myTemplate, t));
 ```
 
 ### Example
@@ -87,5 +87,5 @@ would yield
 
 ## AMD loading
 
-underi18nn will register as an anonymous module if you use [requireJS](http://requirejs.org/).
+underi18n will register as an anonymous module if you use [requireJS](http://requirejs.org/).
 
