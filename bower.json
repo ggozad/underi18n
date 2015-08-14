@@ -19,6 +19,7 @@
   "ignore": [
     "**/.*",
     "bower_components",
-    "tests"
+    "tests",
+    "convert.py"
   ]
 }
