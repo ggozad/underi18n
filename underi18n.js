@@ -1,6 +1,6 @@
-//    underi18n v1.0.0
+//    underi18n v1.1.0
 
-//    (c) 2012 Yiorgis Gozadinos
+//    (c) 2012-2015 Yiorgis Gozadinos
 //    underi18n is distributed under the MIT license.
 //    http://github.com/ggozad/underi18n
 
@@ -10,6 +10,9 @@
         define([], function () {
             return (root.underi18n = factory());
         });
+    } else if (typeof module !== 'undefined' && module.exports) {
+        // node
+        module.exports = factory();
     } else {
         // Browser globals
         root.underi18n = factory();
