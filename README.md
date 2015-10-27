@@ -1,7 +1,7 @@
 # underi18n.js
 
 `underi18n` is a minimalistic approach to internationalization for javascript-based templates.
-It can work in conjuction with other libraries providing the templates, such as [underscore](http://underscorejs.org/#template) or [moustache](https://github.com/janl/mustache.js). It supports variable substitution and AMD loading.
+It can work in conjuction with other libraries providing the templates, such as [underscore](http://underscorejs.org/#template) or [moustache](https://github.com/janl/mustache.js). It supports variable substitution.
 
 ## Catalogs
 
@@ -85,7 +85,7 @@ would yield
 <span>There are 3 files in this folder</span>
 ```
 
-## AMD loading
+## AMD loading & node.js support
 
-underi18n will register as an anonymous module if you use [requireJS](http://requirejs.org/).
+underi18n will register as an anonymous module if you use [requireJS](http://requirejs.org/) or export as a module in node.
 

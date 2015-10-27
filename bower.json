@@ -1,10 +1,10 @@
 {
   "name": "underi18n",
   "main": "underi18n.js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "homepage": "https://github.com/ggozad/underi18n",
   "authors": [
-    "Yiorgis Gozadinos <ggozad@crypho.com>"
+    "Yiorgis Gozadinos <ggozadinos@gmail.com>"
   ],
   "description": "A minimalistic approach to internationalization for javascript-based templates.",
   "keywords": [

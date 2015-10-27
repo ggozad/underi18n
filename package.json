@@ -1,0 +1,23 @@
+{
+  "name": "underi18n",
+  "version": "1.1.0",
+  "description": "A minimalistic approach to internationalization for javascript-based templates.",
+  "author": "Yiorgis Gozadinos <ggozadinos@gmail.com>",
+  "main": "underi18n.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ggozad/underi18n"
+  },
+  "bugs": {
+    "url": "https://github.com/ggozad/underi18n/issues"
+  },
+  "keywords": [
+    "i18n",
+    "internationalization"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "jasmine": "*"
+  },
+  "license": "MIT"
+}
